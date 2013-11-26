@@ -1,0 +1,51 @@
+<%= link_to "Account settings", edit_user_path(@user), :class=>"btn  btn-primary", :style => "float:right;"  %>
+
+<div style="width: 100%;">
+  <div style="width: 10%;float: left;">
+    image
+  </div>
+  <div style="width: 50%;float: left;">
+    <table>
+      <tr>
+        <td>
+          <%= @user.name %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Member since <%= @user.created_at.strftime("%B %d, %Y") %>
+        </td>
+      </tr>  <tr>
+        <td>
+         You are a member of 0 campaigns 
+        </td>
+      </tr>
+<tr>
+        <td>
+         You started 0 campaigns 
+        </td>
+      </tr><tr>
+        <td>
+         You own 0 campaigns in progress. 
+        </td>
+      </tr><tr>
+        <td>
+         Your Crowd:   Followers 0   |   Following 0 
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div style="width: 30%;float: left;">
+    <%= link_to "Invite Friends", "", :onclick => "alert('Coming soon!!!')", :class=>"btn  btn-primary" %> <br/><br/>
+    <%= link_to "Start a Campaign","", :onclick => "alert('Coming soon!!!')", :class=>"btn  btn-primary" %>
+  </div>
+</div>
+<br/><br/><br/><br/><br/><br/><br/><br/>
+<table>
+  <tr>
+    <td>Campaigns:</td>
+    <td>As an Admin</td>
+    <td>//</td>
+    <td> As a Contributor </td>
+  </tr>
+</table>

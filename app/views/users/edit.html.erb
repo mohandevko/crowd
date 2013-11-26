@@ -1,0 +1,48 @@
+<%= link_to "My profile", user_path(@user), :class=>"btn  btn-primary", :style => "float:right;"  %>
+<div style="font-size: 30px;">Account Settings </div><br/>
+  Use this page to customize your personal information<br /><br />
+  <table width="50%">
+    <tr>
+      <td>Basic info</td>
+      <td>
+        //
+      </td>
+      <td>
+        <%= link_to "Direct Deposit", "", :onclick => "alert('Comingsoon!')" %>
+      </td>
+       <td>
+        //
+      </td>
+      <td>
+        <%= link_to "Direct Deposit", "", :onclick => "alert('Comingsoon!')" %>
+      </td>
+    </tr>
+  </table>
+<div style="width: 100%;">
+  <div style="width: 10%;float: left;">
+    image
+  </div>
+  <%= form_for @user do |f|  %>
+    <div style="width: 50%;float: left;">
+      <table>
+        <tr>
+          <td>
+            Name: <br/>
+            <%= f.text_field :name, :value => @user.name %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Email:<br/>
+            <%= f.text_field :email, :value => @user.email %>
+          </td>
+        </tr>  
+        <tr>
+          <td>
+            <%= f.submit "save changes", :class=>"btn  btn-primary" %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  <% end %>
+</div>
