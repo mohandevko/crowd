@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby "2.0.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -30,7 +30,8 @@ gem 'jbuilder', '~> 1.2'
 gem "devise"
 gem "twitter-bootstrap-rails"
 gem 'friendly_id', '~> 5.0.0'
-
+gem 'pg'
+gem 'therubyracer'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
