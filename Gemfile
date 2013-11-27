@@ -31,7 +31,7 @@ gem "devise"
 gem "twitter-bootstrap-rails"
 gem 'friendly_id', '~> 5.0.0'
 gem 'pg'
-gem 'therubyracer'
+#gem 'therubyracer'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
