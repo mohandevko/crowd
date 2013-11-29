@@ -1,48 +1,138 @@
 <%= link_to "My profile", user_path(@user), :class=>"btn  btn-primary", :style => "float:right;"  %>
 <div style="font-size: 30px;">Account Settings </div><br/>
-  Use this page to customize your personal information<br /><br />
-  <table width="50%">
-    <tr>
-      <td>Basic info</td>
-      <td>
-        //
-      </td>
-      <td>
-        <%= link_to "Direct Deposit", "", :onclick => "alert('Comingsoon!')" %>
-      </td>
-       <td>
-        //
-      </td>
-      <td>
-        <%= link_to "Direct Deposit", "", :onclick => "alert('Comingsoon!')" %>
-      </td>
-    </tr>
-  </table>
+Use this page to customize your personal information<br /><br />
+<table width="50%">
+  <tr>
+    <td>
+      <% if params[:tab].blank? %>
+        Basic info
+      <% else %>
+        <%= link_to "Basic info", edit_user_path(current_user) %>
+      <% end %>
+    </td>
+    <td>
+      //
+    </td>
+    <td>
+      <% if params[:tab] == "bank" %>
+        Direct Deposit
+      <% else %>
+        <%= link_to "Direct Deposit", edit_user_path(current_user, :tab => "bank") %>
+      <% end %>
+    </td>
+    <td>
+      //
+    </td>
+    <td>
+      <% if params[:tab] == "notification" %>
+        Direct Deposit
+      <% else %>
+        <%= link_to "Direct Deposit", edit_user_path(current_user, :tab => "notification") %>
+      <% end %>
+    </td>
+  </tr>
+</table>
 <div style="width: 100%;">
-  <div style="width: 10%;float: left;">
-    image
-  </div>
+  <% unless params[:tab] %>
+    <div style="width: 20%;float: left;">
+      image <br/><br/><br/><br/>
+      <%= link_to "Change", "", :onclick => "alert('Comingsoon!!');", :class=>"btn  btn-primary" %>
+    </div>
+  <% end %>
   <%= form_for @user do |f|  %>
-    <div style="width: 50%;float: left;">
+    <% if params[:tab].blank?  %>
+      <div style="width: 50%;float: left;">
+        <table>
+          <tr>
+            <td>
+              Name: <br/>
+              <%= f.text_field :name, :value => @user.name %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Email:<br/>
+              <%= f.text_field :email, :value => @user.email %>
+            </td>
+          </tr>  
+          <tr>
+            <td>
+              <%= f.submit "save changes", :class=>"btn  btn-primary" %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    <% elsif params[:tab] == "bank" %>
+      <h3>Identify Yourself Enter</h3> 
+      your own information below – even if you are not the bank account holder:
       <table>
         <tr>
           <td>
-            Name: <br/>
-            <%= f.text_field :name, :value => @user.name %>
+            <h6>Your Legal Name <span>(no middle name)</span></h6> 
+            <%= f.text_field :legal_name, :value => current_user.name %>
+          </td>
+          <td>
+            <h6>Birth Month</h6>
+            <%= f.text_field :birth_month, :placeholder => "mm" %>
+          </td>
+          <td>
+            <h6>Birth Year</h6>
+            <%= f.text_field :birth_year, :placeholder => "yyyy" %>
+          </td>
+        </tr> 
+        <tr>
+          <td colspan="2">
+            <h6>Street Address (no city or state)</h6>
+            <%= f.text_area :address %>
+          </td>
+          <td>
+            <h6>Zip</h6>
+            <%= f.text_field :zip %>
           </td>
         </tr>
         <tr>
           <td>
-            Email:<br/>
-            <%= f.text_field :email, :value => @user.email %>
+            <h6>Phone</h6>
+            <%= f.text_field :phone %>
           </td>
-        </tr>  
+          <td colspan="2">
+
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <hr/>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <h3>Enter The Bank Information</h3> 
+            Where the money should be deposited:
+          </td>
+        </tr>
         <tr>
           <td>
-            <%= f.submit "save changes", :class=>"btn  btn-primary" %>
+            <h6>
+              Bank Routing Number 
+            </h6>
+             <%= f.text_field :bank_routing_no %>
+          </td>
+          <td>
+             <h6>
+              Account Number 
+            </h6>
+             <%= f.text_field :account_no %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            
+          </td>
+          <td>
+           <%= f.submit "save changes", :class=>"btn  btn-primary" %>
           </td>
         </tr>
       </table>
-    </div>
+    <% end %>
   <% end %>
-</div>
+</div>  
